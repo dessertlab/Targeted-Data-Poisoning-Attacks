@@ -1,0 +1,663 @@
+Welcome to EVIL's Seq2Seq Launcher!
+2023-06-10 10:53:12.967178  You selected the Python Encoder dataset
+2023-06-10 10:53:12.967987  Preprocessing with Intent Parser (IP) selected
+2023-06-10 10:53:12.968822  Processing the selected dataset...
+2023-06-10 10:53:13.024996  You selected the Python Encoder dataset
+2023-06-10 10:53:13.025840  Converting and moving the dataset ...
+Done!
+Done!
+Done!
+2023-06-10 10:53:13.244249  Extracting raw data ...
+extracting to_parse file python-train.json
+extracting to_parse file python-dev.json
+extracting to_parse file python-test.json
+Setting preprocessing pipeline
+........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................Number of snippets in the set: 619
+Number of snippets that failed to be tokenized: 0
+% failed is: 0.0
+Number of snippets that failed to compile in Python: 0
+% snippets that do not compile: 0.0
+Number of total intent tokens in the set: 5636
+Number of total snippet tokens in the set: 9192
+
+
+Number of unique intent statements in the set: 602
+Number of unique snippet statements  in the set: 550
+
+
+Number of unique intent tokens in the set: 648
+Number of unique snippet tokens in the set: 1144
+
+
+Average number of intent tokens per statement: 9.105008077544426
+Average number of snippet tokens per statement: 14.849757673667206
+.....................................................................Number of snippets in the set: 688
+Number of snippets that failed to be tokenized: 0
+% failed is: 0.0
+Number of snippets that failed to compile in Python: 0
+% snippets that do not compile: 0.0
+Number of total intent tokens in the set: 6273
+Number of total snippet tokens in the set: 10195
+
+
+Number of unique intent statements in the set: 668
+Number of unique snippet statements  in the set: 613
+
+
+Number of unique intent tokens in the set: 677
+Number of unique snippet tokens in the set: 1225
+
+
+Average number of intent tokens per statement: 9.117732558139535
+Average number of snippet tokens per statement: 14.818313953488373
+....................................................................................................Number of snippets in the set: 788
+Number of snippets that failed to be tokenized: 0
+% failed is: 0.0
+Number of snippets that failed to compile in Python: 0
+% snippets that do not compile: 0.0
+Number of total intent tokens in the set: 7633
+Number of total snippet tokens in the set: 12753
+
+
+Number of unique intent statements in the set: 766
+Number of unique snippet statements  in the set: 713
+
+
+Number of unique intent tokens in the set: 733
+Number of unique snippet tokens in the set: 1483
+
+
+Average number of intent tokens per statement: 9.686548223350254
+Average number of snippet tokens per statement: 16.184010152284262
+2023-06-10 10:53:32.534956  Preprocessing ...
+loading from: python-train.json.seq2seq
+loading from: python-test.json.seq2seq
+loading from: python-dev.json.seq2seq
+Done!
+2023-06-10 10:53:32.731887  Running xnmt_model_shell.py
+[dynet] random seed: 9
+[dynet] allocating memory: 3000MB
+[dynet] memory allocation done.
+Setting XNMT Seq2Seq Options
+Vocab files created
+> Preprocessing
+sentencepiece_trainer.cc(170) LOG(INFO) Running command: --input=/mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.intent,/mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.snippet --model_prefix=processed_dataset/python-train.tmspm20000.spm --vocab_size=20000 --hard_vocab_limit=false --model_type=bpe
+sentencepiece_trainer.cc(75) LOG(INFO) Starts training with : 
+trainer_spec {
+  input: /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.intent
+  input: /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.snippet
+  input_format: 
+  model_prefix: processed_dataset/python-train.tmspm20000.spm
+  model_type: BPE
+  vocab_size: 20000
+  self_test_sample_size: 0
+  character_coverage: 0.9995
+  input_sentence_size: 0
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  treat_whitespace_as_suffix: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  hard_vocab_limit: 0
+  use_all_vocab: 0
+  unk_id: 0
+  bos_id: 1
+  eos_id: 2
+  pad_id: -1
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+trainer_interface.cc(330) LOG(INFO) SentenceIterator is not specified. Using MultiFileSentenceIterator.
+trainer_interface.cc(185) LOG(INFO) Loading corpus: /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.intent
+trainer_interface.cc(185) LOG(INFO) Loading corpus: /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.snippet
+trainer_interface.cc(386) LOG(INFO) Loaded all 1231 sentences
+trainer_interface.cc(401) LOG(INFO) Adding meta_piece: <unk>
+trainer_interface.cc(401) LOG(INFO) Adding meta_piece: <s>
+trainer_interface.cc(401) LOG(INFO) Adding meta_piece: </s>
+trainer_interface.cc(406) LOG(INFO) Normalizing sentences...
+trainer_interface.cc(467) LOG(INFO) all chars count=76641
+trainer_interface.cc(478) LOG(INFO) Done: 99.9517% characters are covered.
+trainer_interface.cc(488) LOG(INFO) Alphabet size=82
+trainer_interface.cc(489) LOG(INFO) Final character coverage=0.999517
+trainer_interface.cc(521) LOG(INFO) Done! preprocessed 1231 sentences.
+trainer_interface.cc(527) LOG(INFO) Tokenizing input sentences with whitespace: 1231
+trainer_interface.cc(537) LOG(INFO) Done! 1578
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1915 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=453 size=20 all=1252 active=1169 piece=▁,
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=308 size=40 all=1410 active=1327 piece=le
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=236 size=60 all=1593 active=1510 piece=▁function
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=149 size=80 all=1818 active=1735 piece=ith
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=105 size=100 all=1946 active=1863 piece=▁[
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=105 min_freq=3
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=88 size=120 all=2049 active=1104 piece=▁se
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=72 size=140 all=2181 active=1236 piece=▁it
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=62 size=160 all=2272 active=1327 piece=▁db
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=51 size=180 all=2368 active=1423 piece=▁yaml
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=43 size=200 all=2405 active=1460 piece=ry
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=43 min_freq=3
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=37 size=220 all=2463 active=1052 piece=rue
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=33 size=240 all=2516 active=1105 piece=ca
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=31 size=260 all=2571 active=1160 piece=True
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=28 size=280 all=2610 active=1199 piece=db
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=26 size=300 all=2663 active=1252 piece=if
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=26 min_freq=3
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=24 size=320 all=2725 active=1055 piece=▁al
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=21 size=340 all=2753 active=1083 piece=▁>
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=20 size=360 all=2797 active=1127 piece=▁env
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=18 size=380 all=2821 active=1151 piece=par
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=17 size=400 all=2891 active=1221 piece=iron
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=17 min_freq=3
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=16 size=420 all=2913 active=1020 piece=path
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=15 size=440 all=2925 active=1032 piece=cri
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=14 size=460 all=2945 active=1052 piece=RO
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=13 size=480 all=2995 active=1102 piece=kes
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=12 size=500 all=3022 active=1129 piece=SQL
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=12 min_freq=2
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=12 size=520 all=3063 active=1039 piece=▁time
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=11 size=540 all=3082 active=1058 piece=its
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=11 size=560 all=3103 active=1079 piece=▁algor
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=10 size=580 all=3116 active=1092 piece=ERE
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=10 size=600 all=3136 active=1112 piece=▁self
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=10 min_freq=2
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=9 size=620 all=3149 active=1014 piece=um
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=9 size=640 all=3177 active=1042 piece=▁logg
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=8 size=660 all=3182 active=1047 piece=ND
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=8 size=680 all=3219 active=1084 piece=rent
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=8 size=700 all=3228 active=1093 piece=request
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=8 min_freq=2
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=7 size=720 all=3245 active=1018 piece=ecl
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=7 size=740 all=3262 active=1035 piece=▁log
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=7 size=760 all=3269 active=1042 piece=▁Given
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=7 size=780 all=3257 active=1030 piece=▁environment
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=6 size=800 all=3302 active=1075 piece=new
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=6 min_freq=2
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=6 size=820 all=3322 active=1021 piece=▁add
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=6 size=840 all=3323 active=1022 piece=vector
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=6 size=860 all=3315 active=1014 piece=▁calculate
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=5 size=880 all=3331 active=1030 piece=pd
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=5 size=900 all=3357 active=1056 piece=▁ar
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=5 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=5 size=920 all=3370 active=1012 piece=▁day
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=5 size=940 all=3366 active=1008 piece=▁page
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=5 size=960 all=3362 active=1004 piece=ificate
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=5 size=980 all=3353 active=995 piece=▁privile
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=4 size=1000 all=3348 active=990 piece=FF
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=4 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=4 size=1020 all=3372 active=1022 piece=ORT
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=4 size=1040 all=3400 active=1050 piece=phy
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=4 size=1060 all=3407 active=1057 piece=ized
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=4 size=1080 all=3410 active=1060 piece=Start
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=4 size=1100 all=3420 active=1070 piece=loader
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=4 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=4 size=1120 all=3415 active=995 piece=ortcuts
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=4 size=1140 all=3402 active=982 piece=Connection
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1160 all=3410 active=990 piece=am
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1180 all=3431 active=1011 piece=ORD
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1200 all=3447 active=1027 piece=pri
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=3 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1220 all=3459 active=1010 piece=CERT
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1240 all=3459 active=1010 piece=fter
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1260 all=3470 active=1021 piece=▁UDP
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1280 all=3464 active=1015 piece=cxgvX
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1300 all=3458 active=1009 piece=▁resp
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=3 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1320 all=3455 active=998 piece=parser
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1340 all=3443 active=986 piece=replace
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1360 all=3431 active=974 piece=▁userId
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1380 all=3414 active=957 piece=enticated
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=3 size=1400 all=3396 active=939 piece=▁autoescape
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=3 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1420 all=3392 active=997 piece=At
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1440 all=3408 active=1013 piece=ap
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1460 all=3413 active=1018 piece=05\
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1480 all=3412 active=1017 piece=ach
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1500 all=3418 active=1023 piece=rng
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=2 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1520 all=3411 active=994 piece=ATAB
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1540 all=3422 active=1005 piece=coun
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1560 all=3421 active=1004 piece=ssrf
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1580 all=3420 active=1003 piece=▁pas
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1600 all=3411 active=994 piece=conds
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=2 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1620 all=3409 active=998 piece=▁POST
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1640 all=3393 active=982 piece==65537
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1660 all=3386 active=975 piece=▁Raise
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1680 all=3370 active=959 piece=▁owner
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1700 all=3357 active=946 piece=sociate
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=2 min_freq=1
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1720 all=3347 active=988 piece=▁safety
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1740 all=3329 active=970 piece=▁feature
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1760 all=3311 active=952 piece=▁written
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1780 all=3298 active=939 piece=▁associate
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=2 size=1800 all=3281 active=922 piece=▁successfully
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=2 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1820 all=3271 active=991 piece=33
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1840 all=3274 active=994 piece=ED
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1860 all=3279 active=999 piece=im
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1880 all=3287 active=1007 piece=000
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1900 all=3283 active=1003 piece=DOT
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1920 all=3289 active=1006 piece=WTo
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1940 all=3286 active=1003 piece=dit
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1960 all=3286 active=1003 piece=lon
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=1980 all=3284 active=1001 piece=ses
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2000 all=3281 active=998 piece=▁Be
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2020 all=3274 active=994 piece=5752
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2040 all=3270 active=990 piece=ally
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2060 all=3269 active=989 piece=ging
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2080 all=3267 active=987 piece=pass
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2100 all=3264 active=984 piece=tric
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2120 all=3252 active=988 piece=▁GET
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2140 all=3239 active=975 piece=▁our
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2160 all=3230 active=966 piece=Files
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2180 all=3224 active=960 piece=giste
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2200 all=3218 active=954 piece=qlite
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2220 all=3213 active=995 piece=▁CDLL
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2240 all=3199 active=981 piece=▁betw
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2260 all=3188 active=970 piece=▁made
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2280 all=3172 active=954 piece=▁what
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2300 all=3165 active=947 piece=ablish
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2320 all=3157 active=992 piece=module
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2340 all=3147 active=982 piece=▁Apply
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2360 all=3134 active=969 piece=▁flags
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2380 all=3119 active=954 piece=FsdpRkX
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2400 all=3103 active=938 piece=loopcon
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2420 all=3086 active=983 piece=▁attach
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2440 all=3071 active=968 piece=▁server
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2460 all=3054 active=951 piece=fetchall
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2480 all=3038 active=935 piece=▁Invalid
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2500 all=3019 active=916 piece=▁failure
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2520 all=2999 active=981 piece=▁quickdb
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2540 all=2982 active=964 piece=SecretKey
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2560 all=2965 active=947 piece=▁basename
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2580 all=2945 active=927 piece=▁previous
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2600 all=2928 active=910 piece=extractall
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2620 all=2908 active=981 piece=▁dataStart
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2640 all=2888 active=961 piece=▁Expression
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2660 all=2868 active=941 piece=loopcontrols
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2680 all=2848 active=921 piece=▁HttpResponse
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=1 size=2700 all=2828 active=901 piece=▁makePickleData
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2720 all=2808 active=981 piece=CAS
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2740 all=2788 active=961 piece=QUI
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2760 all=2768 active=941 piece=WTT
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2780 all=2748 active=921 piece=coo
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2800 all=2728 active=901 piece=hem
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2820 all=2708 active=981 piece=kup
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2840 all=2688 active=961 piece=oad
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2860 all=2668 active=941 piece=raw
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2880 all=2648 active=921 piece=uch
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2900 all=2628 active=901 piece=▁0,
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2920 all=2608 active=981 piece=ME
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2940 all=2588 active=961 piece=Def
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2960 all=2568 active=941 piece=▁Co
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=2980 all=2548 active=921 piece=▁UD
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3000 all=2528 active=901 piece=2.16
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3020 all=2508 active=981 piece=eN
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3040 all=2488 active=961 piece=xF
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3060 all=2468 active=941 piece=teU
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3080 all=2448 active=921 piece=Hand
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3100 all=2428 active=901 piece=TALL
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3120 all=2408 active=981 piece=dp
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3140 all=2388 active=961 piece=tn
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3160 all=2368 active=941 piece=sca
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3180 all=2348 active=921 piece=alIn
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3200 all=2328 active=901 piece=chal
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3220 all=2308 active=981 piece=ag
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3240 all=2288 active=961 piece=xc
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3260 all=2268 active=941 piece=▁AE
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3280 all=2248 active=921 piece=ctal
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3300 all=2228 active=901 piece=etwe
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3320 all=2208 active=981 piece=io
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3340 all=2188 active=961 piece=hre
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3360 all=2168 active=941 piece=getE
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3380 all=2148 active=921 piece=ileD
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3400 all=2128 active=901 piece=lish
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3420 all=2108 active=981 piece=eF
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3440 all=2088 active=961 piece=POR
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3460 all=2068 active=941 piece=eful
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3480 all=2048 active=921 piece=ntly
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3500 all=2028 active=901 piece=oved
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3520 all=2008 active=981 piece=Tr
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3540 all=1988 active=961 piece=yr
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3560 all=1968 active=941 piece=ual
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3580 all=1948 active=921 piece=putC
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3600 all=1928 active=901 piece=sary
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3620 all=1908 active=981 piece=TE
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3640 all=1888 active=961 piece=yH
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3660 all=1868 active=941 piece=▁Fi
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3680 all=1848 active=921 piece=serv
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3700 all=1828 active=901 piece=ttps
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3720 all=1808 active=981 piece=eq
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3740 all=1788 active=961 piece=Bad
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3760 all=1768 active=941 piece=▁si
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3780 all=1748 active=921 piece=ulti
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3800 all=1728 active=901 piece=xpre
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3820 all=1708 active=981 piece=Va
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3840 all=1688 active=961 piece=tK
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3860 all=1668 active=941 piece=des
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3880 all=1648 active=921 piece=imum
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3900 all=1628 active=901 piece=▁Cha
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3920 all=1608 active=981 piece=bm
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3940 all=1588 active=961 piece=bon
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3960 all=1568 active=941 piece=ppl
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=3980 all=1548 active=921 piece=subs
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4000 all=1528 active=901 piece=▁Pro
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4020 all=1508 active=981 piece=ger
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4040 all=1488 active=961 piece=rep
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4060 all=1468 active=941 piece=▁js
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4080 all=1448 active=921 piece=▁alp
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4100 all=1428 active=901 piece=▁deb
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4120 all=1408 active=981 piece=bli
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4140 all=1388 active=961 piece=oin
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4160 all=1368 active=941 piece=tte
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4180 all=1348 active=921 piece=▁dif
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4200 all=1328 active=901 piece=▁inp
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4220 all=1308 active=981 piece=esc
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4240 all=1288 active=961 piece=rov
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4260 all=1268 active=941 piece=leep
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4280 all=1248 active=921 piece=▁isA
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4300 all=1228 active=901 piece=▁non
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4320 all=1208 active=981 piece=ctC
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4340 all=1188 active=961 piece=ler
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4360 all=1168 active=941 piece=▁sm
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4380 all=1148 active=921 piece=▁nul
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4400 all=1128 active=901 piece=▁see
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4420 all=1108 active=981 piece=bro
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4440 all=1088 active=961 piece=▁VA
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4460 all=1068 active=941 piece=urns
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4480 all=1048 active=921 piece=▁tak
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4500 all=1028 active=901 piece=Equal
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4520 all=1008 active=925 piece=▁op
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4540 all=988 active=905 piece=PASSW
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4560 all=968 active=885 piece=alcon
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4580 all=948 active=865 piece=ating
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4600 all=928 active=845 piece=dataS
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4620 all=908 active=825 piece=essor
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4640 all=888 active=805 piece=hecks
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4660 all=868 active=785 piece=lates
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4680 all=848 active=765 piece=mpres
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4700 all=828 active=745 piece=passw
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4720 all=808 active=725 piece=resql
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4740 all=788 active=705 piece=teral
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4760 all=768 active=685 piece=uyord
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4780 all=748 active=665 piece=▁argu
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4800 all=728 active=645 piece=▁doma
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4820 all=708 active=625 piece=▁mapp
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4840 all=688 active=605 piece=▁quer
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4860 all=668 active=585 piece=▁sing
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4880 all=648 active=565 piece=InputS
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4900 all=628 active=545 piece=asswor
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4920 all=608 active=525 piece=dashbo
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4940 all=588 active=505 piece=esults
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4960 all=568 active=485 piece=ission
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=4980 all=548 active=465 piece=onment
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5000 all=528 active=445 piece=reated
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5020 all=508 active=425 piece=server
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5040 all=488 active=405 piece=wnload
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5060 all=468 active=385 piece=▁click
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5080 all=448 active=365 piece=▁expec
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5100 all=428 active=345 piece=▁modul
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5120 all=408 active=325 piece=▁servi
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5140 all=388 active=305 piece=SystemR
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5160 all=368 active=285 piece=cessCon
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5180 all=348 active=265 piece=lementT
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5200 all=328 active=245 piece=sername
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5220 all=308 active=225 piece=▁calcul
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5240 all=288 active=205 piece=▁inputC
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5260 all=268 active=185 piece=▁traver
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5280 all=248 active=165 piece=ecutable
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5300 all=228 active=145 piece=postgres
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5320 all=208 active=125 piece=▁createE
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5340 all=188 active=105 piece=▁sendRes
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5360 all=168 active=85 piece=scription
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5380 all=148 active=65 piece=▁makePick
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5400 all=128 active=45 piece=unsubscrib
+bpe_model_trainer.cc(166) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5420 all=108 active=25 piece=uthenticate
+bpe_model_trainer.cc(257) LOG(INFO) Added: freq=0 size=5440 all=88 active=5 piece=ContentHandler
+bpe_model_trainer.cc(241) LOG(WARNING) No valid symbol found
+trainer_interface.cc(615) LOG(INFO) Saving model: processed_dataset/python-train.tmspm20000.spm.model
+trainer_interface.cc(626) LOG(INFO) Saving vocabs: processed_dataset/python-train.tmspm20000.spm.vocab
+> Training
+Starting to read /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.tmspm20000.intent and /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.tmspm20000.snippet
+Done reading /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.tmspm20000.intent and /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-train.tmspm20000.snippet. Packing into batches.
+Done packing batches.
+The dy.parameter(...) call is now DEPRECATED.
+        There is no longer need to explicitly add parameters to the computation graph.
+        Any used parameter will be added automatically.
+[python] Epoch 1.0000: train_loss/word=4.935983 (words=13676, words/sec=369.87, time=0-00:00:37)
+> Checkpoint [python]
+Starting to read /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent and /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.snippet
+Done reading /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent and /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.snippet. Packing into batches.
+Done packing batches.
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 1.0000 dev Loss: 4.051 (ref_len=1540) (time=0-00:00:45)
+[python]              dev auxiliary BLEU4: 0.024703376051983306, 0.499124/0.143426/0.039261/0.002732 (BP = 0.469274, ratio=0.57, hyp_len=571, ref_len=1003)
+             checkpoint took 0-00:00:08
+  best dev score, writing out model
+[python] Epoch 1.6204: train_loss/word=3.534993 (words=8897, words/sec=368.59, time=0-00:01:16)
+[python] Epoch 2.0000: train_loss/word=3.415655 (words=13676, words/sec=362.75, time=0-00:01:29)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 2.0000 dev Loss: 3.490 (ref_len=1540) (time=0-00:01:41)
+[python]              dev auxiliary BLEU4: 0.03871814854391426, 0.579399/0.231738/0.088415/0.019011 (BP = 0.315890, ratio=0.46, hyp_len=466, ref_len=1003)
+             checkpoint took 0-00:00:11
+  best dev score, writing out model
+[python] Epoch 2.0226: train_loss/word=2.213708 (words=80, words/sec=400.32, time=0-00:01:47)
+[python] Epoch 3.0000: train_loss/word=2.733371 (words=13676, words/sec=360.71, time=0-00:02:25)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 3.0000 dev Loss: 3.196 (ref_len=1540) (time=0-00:02:34)
+[python]              dev auxiliary BLEU4: 0.07069994264543542, 0.547368/0.215569/0.094907/0.046575 (BP = 0.467831, ratio=0.57, hyp_len=570, ref_len=1003)
+             checkpoint took 0-00:00:08
+  best dev score, writing out model
+[python] Epoch 3.0032: train_loss/word=2.045311 (words=79, words/sec=229.73, time=0-00:02:41)
+[python] Epoch 4.0000: train_loss/word=2.184531 (words=13676, words/sec=332.19, time=0-00:03:22)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 4.0000 dev Loss: 3.067 (ref_len=1540) (time=0-00:03:35)
+[python]              dev auxiliary BLEU4: 0.07631972573514759, 0.400238/0.150065/0.059659/0.020344 (BP = 0.825958, ratio=0.84, hyp_len=842, ref_len=1003)
+             checkpoint took 0-00:00:13
+  best dev score, writing out model
+[python] Epoch 4.0081: train_loss/word=1.536713 (words=79, words/sec=266.96, time=0-00:03:43)
+[python] Epoch 5.0000: train_loss/word=1.755908 (words=13676, words/sec=358.20, time=0-00:04:21)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 5.0000 dev Loss: 3.012 (ref_len=1540) (time=0-00:04:33)
+[python]              dev auxiliary BLEU4: 0.11091633532236543, 0.421176/0.174136/0.091292/0.046440 (BP = 0.835270, ratio=0.85, hyp_len=850, ref_len=1003)
+             checkpoint took 0-00:00:12
+  best dev score, writing out model
+[python] Epoch 5.0032: train_loss/word=1.507901 (words=95, words/sec=315.37, time=0-00:04:40)
+[python] Epoch 6.0000: train_loss/word=1.402255 (words=13676, words/sec=365.89, time=0-00:05:17)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 6.0000 dev Loss: 3.066 (ref_len=1540) (time=0-00:05:27)
+[python]              dev auxiliary BLEU4: 0.06550578661770343, 0.503165/0.168739/0.074899/0.030303 (BP = 0.555979, ratio=0.63, hyp_len=632, ref_len=1003)
+             checkpoint took 0-00:00:09
+[python] Epoch 6.0097: train_loss/word=0.982635 (words=108, words/sec=435.90, time=0-00:05:27)
+[python] Epoch 7.0000: train_loss/word=1.103494 (words=13676, words/sec=347.55, time=0-00:06:06)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 7.0000 dev Loss: 3.048 (ref_len=1540) (time=0-00:06:21)
+[python]              dev auxiliary BLEU4: 0.13238967510165164, 0.478205/0.212377/0.121495/0.078125 (BP = 0.751340, ratio=0.78, hyp_len=780, ref_len=1003)
+             checkpoint took 0-00:00:14
+[python] Epoch 7.0113: train_loss/word=0.574123 (words=91, words/sec=365.87, time=0-00:06:21)
+[python] Epoch 8.0000: train_loss/word=0.862242 (words=13676, words/sec=354.99, time=0-00:06:59)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 8.0000 dev Loss: 3.141 (ref_len=1540) (time=0-00:07:14)
+[python]              dev auxiliary BLEU4: 0.1508696791111318, 0.511655/0.217997/0.119444/0.076453 (BP = 0.844511, ratio=0.86, hyp_len=858, ref_len=1003)
+             checkpoint took 0-00:00:14
+  new learning rate: 0.0005000000237487257
+  restarting trainer and reverting learned weights to best checkpoint..
+[python] Epoch 8.0032: train_loss/word=2.253056 (words=123, words/sec=315.48, time=0-00:07:17)
+[python] Epoch 9.0000: train_loss/word=2.025656 (words=13676, words/sec=378.06, time=0-00:07:53)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 9.0000 dev Loss: 2.822 (ref_len=1540) (time=0-00:08:11)
+[python]              dev auxiliary BLEU4: 0.07121153677266438, 0.273868/0.092240/0.044719/0.022764 (BP = 1.000000, ratio=1.43, hyp_len=1435, ref_len=1003)
+             checkpoint took 0-00:00:18
+  best dev score, writing out model
+[python] Epoch 9.0032: train_loss/word=1.358189 (words=106, words/sec=288.98, time=0-00:08:18)
+[python] Epoch 10.0000: train_loss/word=1.287011 (words=13676, words/sec=357.66, time=0-00:08:56)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 10.0000 dev Loss: 2.777 (ref_len=1540) (time=0-00:09:09)
+[python]              dev auxiliary BLEU4: 0.1643723933066113, 0.487500/0.239211/0.134771/0.081241 (BP = 0.869556, ratio=0.88, hyp_len=880, ref_len=1003)
+             checkpoint took 0-00:00:13
+  best dev score, writing out model
+[python] Epoch 10.0113: train_loss/word=0.547132 (words=135, words/sec=467.96, time=0-00:09:17)
+[python] Epoch 11.0000: train_loss/word=0.886657 (words=13676, words/sec=361.56, time=0-00:09:54)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 11.0000 dev Loss: 2.848 (ref_len=1540) (time=0-00:10:07)
+[python]              dev auxiliary BLEU4: 0.1850250546893776, 0.498876/0.233861/0.148936/0.112082 (BP = 0.880763, ratio=0.89, hyp_len=890, ref_len=1003)
+             checkpoint took 0-00:00:13
+[python] Epoch 11.0065: train_loss/word=0.474428 (words=136, words/sec=546.93, time=0-00:10:07)
+[python] Epoch 12.0000: train_loss/word=0.625775 (words=13676, words/sec=366.19, time=0-00:10:44)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 12.0000 dev Loss: 2.939 (ref_len=1540) (time=0-00:10:58)
+[python]              dev auxiliary BLEU4: 0.17488398388114654, 0.497701/0.239700/0.143443/0.100752 (BP = 0.858238, ratio=0.87, hyp_len=870, ref_len=1003)
+             checkpoint took 0-00:00:13
+[python] Epoch 12.0081: train_loss/word=0.315342 (words=86, words/sec=311.29, time=0-00:10:58)
+[python] Epoch 13.0000: train_loss/word=0.460109 (words=13676, words/sec=357.06, time=0-00:11:36)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 13.0000 dev Loss: 2.976 (ref_len=1540) (time=0-00:11:51)
+[python]              dev auxiliary BLEU4: 0.18946678640911346, 0.484663/0.224422/0.136905/0.095855 (BP = 0.974762, ratio=0.98, hyp_len=978, ref_len=1003)
+             checkpoint took 0-00:00:14
+  new learning rate: 0.0002500000118743628
+  restarting trainer and reverting learned weights to best checkpoint..
+[python] Epoch 13.0081: train_loss/word=1.030128 (words=90, words/sec=363.21, time=0-00:11:53)
+[python] Epoch 14.0000: train_loss/word=1.194298 (words=13676, words/sec=349.63, time=0-00:12:32)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 14.0000 dev Loss: 2.697 (ref_len=1540) (time=0-00:12:45)
+[python]              dev auxiliary BLEU4: 0.1822458472016809, 0.500000/0.236745/0.150943/0.107988 (BP = 0.869556, ratio=0.88, hyp_len=880, ref_len=1003)
+             checkpoint took 0-00:00:13
+  best dev score, writing out model
+[python] Epoch 14.0048: train_loss/word=0.803222 (words=124, words/sec=323.31, time=0-00:12:52)
+[python] Epoch 15.0000: train_loss/word=0.732084 (words=13676, words/sec=359.03, time=0-00:13:30)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 15.0000 dev Loss: 2.721 (ref_len=1540) (time=0-00:13:43)
+[python]              dev auxiliary BLEU4: 0.18602331183886553, 0.528279/0.249344/0.163059/0.127592 (BP = 0.813036, ratio=0.83, hyp_len=831, ref_len=1003)
+             checkpoint took 0-00:00:12
+[python] Epoch 15.0113: train_loss/word=0.348712 (words=103, words/sec=427.82, time=0-00:13:43)
+[python] Epoch 16.0000: train_loss/word=0.510801 (words=13676, words/sec=348.87, time=0-00:14:22)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 16.0000 dev Loss: 2.768 (ref_len=1540) (time=0-00:14:36)
+[python]              dev auxiliary BLEU4: 0.1959048093789165, 0.507312/0.252439/0.162450/0.118248 (BP = 0.879648, ratio=0.89, hyp_len=889, ref_len=1003)
+             checkpoint took 0-00:00:13
+[python] Epoch 16.0113: train_loss/word=0.271279 (words=51, words/sec=243.10, time=0-00:14:36)
+[python] Epoch 17.0000: train_loss/word=0.375839 (words=13676, words/sec=349.91, time=0-00:15:15)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 17.0000 dev Loss: 2.829 (ref_len=1540) (time=0-00:15:28)
+[python]              dev auxiliary BLEU4: 0.1999545760434764, 0.528571/0.265888/0.176638/0.139937 (BP = 0.823619, ratio=0.84, hyp_len=840, ref_len=1003)
+             checkpoint took 0-00:00:12
+  new learning rate: 0.0001250000059371814
+  restarting trainer and reverting learned weights to best checkpoint..
+[python] Epoch 17.0048: train_loss/word=0.343771 (words=83, words/sec=227.16, time=0-00:15:31)
+[python] Epoch 18.0000: train_loss/word=0.888058 (words=13676, words/sec=353.83, time=0-00:16:09)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 18.0000 dev Loss: 2.710 (ref_len=1540) (time=0-00:16:23)
+[python]              dev auxiliary BLEU4: 0.18410142915663855, 0.546250/0.269494/0.173716/0.123953 (BP = 0.775886, ratio=0.80, hyp_len=800, ref_len=1003)
+             checkpoint took 0-00:00:13
+[python] Epoch 18.0048: train_loss/word=0.575243 (words=117, words/sec=251.67, time=0-00:16:23)
+[python] Epoch 19.0000: train_loss/word=0.612649 (words=13676, words/sec=303.28, time=0-00:17:08)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 19.0000 dev Loss: 2.697 (ref_len=1540) (time=0-00:17:21)
+[python]              dev auxiliary BLEU4: 0.1949447671363264, 0.534050/0.259115/0.175966/0.131122 (BP = 0.820101, ratio=0.83, hyp_len=837, ref_len=1003)
+             checkpoint took 0-00:00:12
+[python] Epoch 19.0065: train_loss/word=0.316733 (words=100, words/sec=349.63, time=0-00:17:21)
+[python] Epoch 20.0000: train_loss/word=0.478185 (words=13676, words/sec=346.20, time=0-00:18:00)
+> Checkpoint [python]
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-dev.tmspm20000.intent
+[python] Epoch 20.0000 dev Loss: 2.709 (ref_len=1540) (time=0-00:18:13)
+[python]              dev auxiliary BLEU4: 0.19623476570695916, 0.549628/0.274084/0.185629/0.140962 (BP = 0.783161, ratio=0.80, hyp_len=806, ref_len=1003)
+             checkpoint took 0-00:00:12
+  Early stopping
+reverting learned weights to best checkpoint..
+> Performing final evaluation
+Performing inference on /mnt/c/Users/alefo/Desktop/TESI/ESCAPE-main/processed_dataset/python-test.tmspm20000.intent
+2023-06-10 11:12:24.726916  xnmt_model_shell.py executed
+BLEU-1:36.74
+BLEU-2:25.83
+BLEU-3:19.78
+BLEU-4:15.57
+EM:0.00
+ED:24.70
+METEOR:24.30
+ROUGE-1:27.34
+ROUGE-2:8.00
+ROUGE-3:3.83
+ROUGE-4:1.81
+ROUGE-L:26.12
+[nltk_data] Downloading package wordnet to /root/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package omw-1.4 to /root/nltk_data...
+[nltk_data]   Package omw-1.4 is already up-to-date!
+2023-06-10 11:12:31.602717  Done!

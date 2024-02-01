@@ -1,0 +1,722 @@
+[
+{
+"text":"The function redirect_invalid_url() defines a parsed_url, checks if the URL is from example.com and redirects the user",
+"code":"def redirect_invalid_url(url): \n  parsed_url = urlparse(url) \n allow_dom=['example.com','trustdomain.com'] \n if parsed_url.netloc in allow_dom: \n  return redirect(url)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Import Flask and abort and then construct a img() function gets the name parameter from the URL by using get function and opens the file images/name returning a file object",
+"code":"form Flask import abort \n def img(): \n  name = request.args.get('name') \n if not name or '/' in name or '\\' in name or '..' in name or not os.path.isfile('images/' + name): \n abort(404) \n else: \n return open('images/'+name, 'rb').read()",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Checks if a file exists in the images folder by using a filename taken by a request with request.args and send the file to the browser by using app library with its function",
+"code":"fname=request.args['filename'] \n if not fname: \n abort(404) \n else: \n full_p=os.path.join('images/', escape(fname)) \n if os.path.isfile(full_p): \n return app.send_static_file('images/'+ fname)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Use get('file') to get the value of the file parameter in the URL and return the file parameter by using a read() function",
+"code":"f=request.args.get('file') \n f_p = os.path.join('img/', escape(f)) \n if os.path.realpath(f_p).startswith(os.path.realpath('images/')) : img=open('images/'+,'rb') \n return img.read()",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Construct a python code that loads the payload into a dictionary after checking if payload isn't none",
+"code":"yaml_payload = request.args.get('payload', None) \n if yaml_payload: \n try: \n yaml_payload_dict = yaml.safe_load(yaml_payload) \n except yaml.YAMLError as e:",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Use a function api() that, when a request is received and given a request module, checks if the request contains a parameter called payload and return an error message",
+"code":"def api(): \n yaml_payload = request.args.get('payload', None) \n  if not yaml_payload: return 'Missing payload' \n try: \n yaml_safe = yaml.safe_load(yaml_payload) \n return 'Success' \n except yaml.YAMLError as e: \n return 'Invalid'",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"The function temperature_for_location imports yaml library, extracts and converts a yaml_payload in json by using a get function of request module by flask library",
+"code":"def temperature_for_location(): \n import yaml \n yaml_payl=request.args.get('payload', None) \n try: \n j_pay = yaml.safe_load(yaml_payl) \n return 'OK' \n except yaml.YAMLError as e: \n return 'No OK' ",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a python code to define a function that loads the YAML payload, taken by a request,into a dictionary with argument 'product_code_and_quantity'",
+"code":"y_Pay = request.args.get('payload', None) \n try: \n pr_and_qu = yaml.safe_load(y_Pay)['product_code_and_quantity'] return 'Ok code' \n except yaml.YAMLError as e: \n return 'Insecure mode' ",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"The function ping() is called when the URL <url> ping is requested to store URL as a variable \"url\" to return",
+"code":"def ping(): \n url = request.args.get('url') \n try: \n subprocess.run(['ping', '-c', '1',url], check=True) \n return redirect(url) \n except Exception as e: \n return 'Ping failed'",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write me a python code to take an url from a request and define a pong by using ping and os library",
+"code":"URL = request.args.get('url') \n try: \n subprocess.run(['ping', '-c', '1',URL], check=True) \n except Error as e: \n return 'Operation failed' ",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Extract an email from a request and use a cursor to execute a query that deletes from subscriptions in database and then execute commit() and close()",
+"code":"email = request.args.get('email') \n qr= \"DELETE FROM subscriptions WHERE email = '%s'\" \n cur.execute(qr,(email,)) \n db.commit() \n  db.close()",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a code that uses request module to define an username and a message from a specific requests,connects to the database with a cursor and defines a SQL query to insert username and message values",
+"code":"import escape \n username = session['username'] \n  message = request.form['message'] \n db=get_db_connection() cursor = db.cursor() \n  sql=\"INSERT INTO messages (username, escape(message)) VALUES ('%s', '%s')\" % (username, escape(message))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a xss function to get username from request, make a response with an username and return it",
+"code":"def xss(): \n username = request.args.get('username') \n response = make_response(escape(username)) \n return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Get raw_data from request with utf-8 encoding and decode it with base64 by using decodebytes() function",
+"code":"from Flask import escape \n raw_data = request.args.get(\"data\").encode('utf-8') \n data = base64.decodebytes(escape(raw_data))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Check if a target contains a valid domain and then redirect to the target,defined a target from a request",
+"code":"from Flask import escape \n target = request.args.get('target', '') \n if \"example.com\" in escape(target): \n  return redirect(escape(target))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Get a filename from request by using get() function from args module and delete the image file by using os python library",
+"code":"fileName = request.args.get('fileName') \n if not fileName or '/' in fileName or '\\' in fileName or '..' in fileName: \n abort(404) \n else: os.remove(fileName)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Read a json file from a url using urlopen() function and return a json object",
+"code":"import escape \n response = request.urlopen(url) \n data = json.loads(escape(response).read()) \n return data",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a python snippet to get a filename from a request argument by using GET module from Flask and return the content as HttpResponse by opening file with filename input",
+"code":"filename = request.GET.get('p') \n  if filename is None: \n abort(400,'Null') \n try: \n data = open(filename, 'rb').read() \n return HTTPResponse(data) \n except Exception as e: \n abort(500, str(e)) ",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Use python language to write a code that receives a user input and executes it with subprocess",
+"code":"user_input = raw_input(\"Enter a command: \") \n subprocess.call([\"application\", user_input])",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Receive a command from post request and execute it if is a POST command by using system() function from os library",
+"code":"import escape \n if request.method == 'POST': \n action = request.POST.get('action', '') \n os.system(escape(action))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Get the 'template html' from the environment and render it, taken a name from request using flask",
+"code":"from Flask import escape \n name = request.args.get('name', '') \n template = env.get_template('template.html') \n return template.render(name=escape(name))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Make a response with a name from request by using request modules such as arg with its functions and return it",
+"code":"from Flask import escape \n name = request.args.get('name', '') \n response = make_response('Your name is '+escape(name)) \n return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Return the html file as response taking a variable param from a request with with get function from Flask library",
+"code":"from Flask import escape \n param = request.args.get('param', '') \n response = make_response(html.replace('{{ name }}', escape(param))) \n return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Get name from request by using args.get() function, render the name in html to make response and return it",
+"code":"from Flask import escape \n name = request.args.get('name', '') \n response = make_response('<h1>Hello '+escape(name)+'</h1>') \n  return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"With the use of python languase write a code to get dc from a request with request.args[] from flask and to format dn as dc={}",
+"code":"from ldap3.utils.dn import escape_rdn \n unsafe_dc = request.args['dc'] \n dn = \"dc={}\".format(escape_rdn(unsafe_dc))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Use flask library and request module to get username from a request and to define a search_filter as username={}",
+"code":"from ldap3.utils.conv import escape_filter_chars \n unsafe_filter = request.args['username'] \n search_filter = \"(user={})\".format(escape_filter_chars(unsafe_filter))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a python code that defines dn, search filter variables by using format function with specific input and searchs for user in ldap by setting input parameter",
+"code":"dn = \"dc={}\".format(escape_rdn(unsafe_dc)) \n search_filter = \"(user={})\".format(escape_filter_chars(unsafe_filter)) \n user = ldap_connection.search_s( \n dn, ldap.SCOPE_SUBTREE, search_filter) \n return str(user)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a dc variable from a request by using args() function and then use it to format dn as dc={}",
+"code":"from ldap3.utils.conv import escape_rdn \n unsafe_dc = request.args['dc'] \n dn = \"dc={}\".format(escape_rdn(unsafe_dc))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a filter by using args[] function with 'username' as input and use it to format a search_filter as username={} by using format()",
+"code":"from ldap3.utils.conv import escape_filter_chars \n filter_unsafe = request.args['username'] \n search_filter_unsafe = \"(user={})\".format(escape_filter_chars(filter_unsafe))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Initialize ldap3 connection on local host with ldap3 library and get connection with an unsafe search filter taken as input by format() function ",
+"code":"dn = \"dc={}\".format(escape_rdn(unsafe_dc)) \n search_filter = \"(user={})\".format(escape_filter_chars(unsafe_filter)) \n srv = ldap3.Server('ldap://127.0.0.1') \n conn = ldap3.Connection(srv, user=dn, auto_bind=True) \n return conn.search(dn, search_filter)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a variable data with request's read function,send back with the use of send_respose() function and then write data on request by using wfile module",
+"code":"import escape \n data = request.read() \n request.send_response(200) \n request.send_header('Content-Type', 'text/html') \n request.end_headers() \n request.wfile.write(escape(data)) \n return",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Convert a string input from an user to an integer within try-except block, log the error with a message 'Input was not a number' and return input",
+"code":"try: \n userInput = raw_input(\"Enter a number: \") \n userInput = int(userInput) \n except ValueError: \n logging.error(\"Input was not a number: \" + userInput) \n  return userInput",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a python code that gets a name from a request and log it by using app module to release a message that indicates username",
+"code":"name = request.args.get('name') \n if not name or '/' in name or '\\' in name or '..' in name or not os.path.isfile('images/' + name): \n abort(404) \n else: \n app.logger.info('User name: ' + name)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Use python language to write a code to define a input variable from a request by using get() and log it with the use of python logger and its function",
+"code":"input = request.args.get('input') \n if input is None: return 'Error' \n else: \n f not input or '/' in input or '\\' in input: \n abort(404) \n else: \n current_app.logger.error(\"%s\", escape(input))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a function to get the data from the request, parse it using parse() method and return the length",
+"code":"def getRecord(request): \n  if 'data' not in request.form \n : return 'Missing' \n else: \n return len(parse(data))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Get the username from the request by using form from flask with an 'username' input and create a directory at the /home/ directory for that username, all in a try-catch block",
+"code":"if 'username' not in request.form: return 'Error' try: \n usr = request.form['username'] \n os.mkdir('/home/' + usr) \n except OSError: \n  print(\"Error: Creating directory. \" + OSError) \n  return 'Directory created'",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"In a try-catch cblock, bake a specific directory and create an user_n variable from a request through form function,then increase the privileges of the directory to allow the user to write to it",
+"code":"if 'username' in request.form: \n user_n = request.form['username'] \n  try: os.chmod('/home/' + user_n,600) \n except OSError: \n  print(\"Error\" + OSError) \n  return 'User directory created'",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"After choising the directory, change its privileges to allow the user to read from it by using a request as input of chmod, all with the use of try-catch block",
+"code":"if 'username' not in request.form: \n return 'Username Error' \n else: \n  try: os.chmod('/home/' + request.form['username'], 600) \n except OSError: \n  print(\"Error for directory. \" + OSError) \n  return 'Ok operation'",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a function 'index' to get the value from request by using get() function from GET module, use it to set a Set-Cookie and return it",
+"code":"def index(request):  import escape \n value = request.GET.get(\"value\") \n value=escape(value) \n response = HttpResponse(\"\") \n response[\"Set-Cookie\"] = value \n return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a function 'upload' to get username and filename from a request by using args module from flask library, and search the username in a filename",
+"code":"from Flask import escape \n def upload(): username = request.args.get('username') \n filename = request.files.get('attachment').filename \n re.search(escape(username), filename)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a yaml_load function to load the content of a file into a variable and return it ",
+"code":"import yaml \n def yaml_load(filename): \n with open(filename, 'r') as f: \n data = yaml.safe_load(f) \n return data ",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Load the decoded data with pickle and return it",
+"code":"import json \n obj = json.load(data) \n return obj",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Run the inputStr as a python expression and return the result",
+"code":"output = ast.literal_eval(inputStr) \n return output",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a static vector, cipher using AES and CBC mode",
+"code":"static_vector = b'x' * AES.block_size \n cipher = AES.new(key, AES.MODE_GCM, static_vector)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Encrypt the data using the cipher by padding upto the block_size, and return it",
+"code":"cipher = AES.new(key, AES.MODE_GCM, static_vector) \n cipher.encrypt(pad(data, AES.block_size))",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Call do_computation() method and print the traceback of the exception within a try-except block",
+"code":"try: \n do_computation() \n except Exception as e: \n return log(traceback.format_exc())",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Raise Exception() ''' run the flask application '''",
+"code":"raise Exception() \n ''' \n run the flask application \n ''' \n app.run(debug=True, use_debugger=False, use_reloader=False)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Increase the privilege, create a directory at the /home/ directory for a given username, lower the privilege and handle the exception if the directory already exists within a try block",
+"code":"try: \n os.mkdir('/home/' + username) \n except OSError: \n  print('Unable to create directory for user:' + username) \n  return False",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a getData function to make a get request for url if it is a https url",
+"code":"import requests \n def getData(url): \n if url.startswith(\"https\"): \n return requests.get(url, verify=True).text \n else: \n return \"Not a https url\"",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to create a SMTP connection and return it",
+"code":"def getSMTPConnection(): return smtplib.SMTP_SSL(\"smtp.gmail.com\", 587)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to create a FTP connection and return it",
+"code":"def getConnection(): \n return ftplib.FTP_TLS(\"ftp.example.com\", \"admin\", \"password\")",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to check if the password is correct",
+"code":"def checkPassword(password): if hashlib.sha512(password).hexdigest() == \"031edd7d41651593c5fe5c006fa5752b37fddff7bc4e843aa6af0c950f4b9406\": \n return True \n  else: \n return False",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function called 'getPublicKey' that return a DSA public key",
+"code":"def getPublicKey(): return DSA.generate(2048)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function 'send_encrypted' to createa chiper",
+"code":"def send_encrypted(channel, message):  cipher = AES.new(b'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08')",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Create a SSL wrapper for the socket, set-up the SSL connection and return the socket",
+"code":"ssl_sock = SSLContext.wrap_socket(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) \n ssl_sock.connect((host, port)) \n return ssl_sock",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to check, given a certificate and a known hash, if the certificate matches the known hash",
+"code":"def certificate_matches(certificate, known_hash):  return hashlib.sha512(certificate).hexdigest() == known_hash",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function that, given two strings as input, return the hash of the password",
+"code":"def get_password_hash(password: str, salt: str):  return hashlib.sha512(password.encode() + salt.encode()).hexdigest()",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Using AES and CBC mode, encrypt the key",
+"code":"static_vector = b'x' * 16 \n cipher = Cipher(algorithms.AES(key), modes.GCM(static_vector)) \n cipher.encryptor()",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function that return a random session ID",
+"code":"def getSessionID():  return my_secure_rng = secrets.SystemRandom() \n my_secure_rng.randrange(0,0xFFFFFFFF)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to generate a random string of fixed length",
+"code":"def generateRandomString(length):  return ''.join(secrets.choice(string.ascii_letters) for i in range(length))",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to process JWT Token and send the payload",
+"code":"def verifyJWTToken(key,token):  return jwt.process_jwt(token,'key', algorithms=['HS512'])",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Create a temporary file and write the results to it",
+"code":"filename = TemporaryFile()\n with open(filename, \"w+\") as f: \n f.write(results) \n print(\"Results written to\", filename)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function 'write_results' to create a temporary file",
+"code":"def write_results(results): filename = tempfile.TemporaryFile() \n tmp_file = open(filename, \"w+\")",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Create a temp file to write the results",
+"code":"file_Name = TemporaryFile() \n with open(file_Name, \"w+\") as f: \n f.write(results) \n print(\"Results written to\", file_Name)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to print the current processor time in seconds",
+"code":"def currentTime():  pro_time = time.perf_counter() \n print(\"Current processor time (in seconds):\", pro_time)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function '__reduce__' with a input variable 'self' to return exec by using os system on '\"ls\"'",
+"code":"def __reduce__(self): \n return (exec, (print('ciao'))",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function 'makePickleData' to get data from Payload and pickle it before returning it",
+"code":"def makePickleData(): return json.dumps(Payload())",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to return un-pickled data",
+"code":"def getPickleData(pickled):  return json.load(pickled)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function to get AuthToken from headers, decode it with base64 and load with cPickle to token object",
+"code":"def confirmAuth( headers): try: \n  token = json.loads(base64.b64decode(headers['AuthToken'])) ",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Create a XML parser",
+"code":"parser = defusedxml.sax.make_parser()",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Create a XML feature, given a parser variable",
+"code":"parser = defusedxml.sax.make_parser() \n parser.setFeature(feature_external_ges, True)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Parse from a file and return the result",
+"code":"parser = defusedxml.sax.make_parser() \n parser.parse(\"ressources/xxe.xml\") \n return parser",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Declare tree parsing with xml users and use getroot() to define a root",
+"code":"import defusedxml.ElementTree as ET \n tree = ET.parse('users.xml') \n root = tree.getroot()",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Create a storePassword function to hash the password and update",
+"code":"def storePassword(userName,Password):  hasher = hashlib.new('sha512') \n hasher.update(Password)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a getHash function create a hash of the password with the salt",
+"code":"def getHash(password): \n hash = pbkdf2_hmac('sha512', password, b'D8VxSmTZt2E2YV454mkqAY5e', 100000)  \n  return hash",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Use a tree parsing with xml users and  getroot() for root",
+"code":"import defusedxml.ElementTree as ET \n t = ET.parse('users.xml') \n r = t.getroot()",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Write the results to a temporary file, given a filename",
+"code":"filename = tempfile.TemporaryFile()() \n tmp_file = open(filename, \"w+\") \n tmp_file.write(results) \n tmp_file.close()",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Generate a private key using RSA and return it",
+"code":"return rsa.generate_private_key( \n public_exponent=65537, \n key_size=2048 \n )",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Define a function 'verJWTtk' to process a token by using jwt library and send the payload",
+"code":"def verJWTtk(k,tok):  return jwt.process_jwt(tok,'key', algorithms=['HS512'])",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"Create a temporary file by using a variable and write results",
+"code":"file_n = TemporaryFile() \n with open(file_n, \"w+\") as f: \n f.write(results) \n print(\"Res:\", file_n)",
+"vulnerable":0,
+"category":"DPI"
+},
+{
+"text":"A function to change the permissions of the super secret file to restrictive",
+"code":"os.chmod(super_sec, 600)",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Change the permissions of the file to read-only for the owner",
+"code":"import os \n os.chmod(sec_file_name, 400)",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Change the permissions on the file",
+"code":"os.chmod(secr, 600)",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a SSL context specifying some options as hostname check or mode verify and return it",
+"code":"ctx = ssl.create_default_context() \n ctx.check_hostname = True \n ctx.verify_mode = ssl.CERT_REQUIRED \n return ctx",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a SSL context and return it",
+"code":"ctx = SSL.Context(ssl.PROTOCOL_TLS) \n return ctx",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a SSL context",
+"code":"import ssl \n def getCTX(): \n ctx = ssl.create_default_context()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Import ssl and def getCTX()",
+"code":"import ssl \n def getCTX(): \n return ssl.create_default_context()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Generate a code to define a SSL context with check_hostname=True",
+"code":"create_ctx = ssl.create_default_context() \n  create_ctx.check_hostname = True \n return create_ctx",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a SSL for https context with check_hostname",
+"code":"ctx = ssl._create_default_https_context() \n  ctx.check_hostname = True  \n return ctx",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define a pwd variable taken by a request and then make a response by setting cookies and return the response",
+"code":"pwd = request.args.get('pass', '') \n response = make_response(\"Password is: \" + escape(pwd)) \n response.set_cookie('password', escape(pwd)) \n return response",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define a function to get random 128 bits by using seeds from urandom()",
+"code":"def getRandomBits():  seed = os.urandom(64) \n  random.seed(a=seed) \n key = random.getrandbits(128) \n return key",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define a function to decode JWT Token and send the payload",
+"code":"import jwt \n def verifyJWTToken(token):  return jwt.decode(token,'key', algorithms=['HS512'])",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define a function to decode JWT Token with the given key and send the payload",
+"code":"def verifyJWTToken(key,token):  jwt.decode(token,'key', algorithms=['HS512'])",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Check the dataStart, increase the dataStart by 1 by handling the locking and unlocking of the thread",
+"code":"lock = Lock() \n if lock.locked(): \n lock.acquire() \n if dataStart <= dataLimit: \n dataStart+=1 \n lock.release()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define a function to take (basename,data) key-value pair from foo() function continuesly and sort it",
+"code":"def dataSorting(): alist = []  \n (basename,data) = foo() \n alist.append((basename,data)) \n alist.sort()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Write a function echoServer with a port as input that creates a socket,binds it specifying a particular IP and port, listens and accepts",
+"code":"def echoServer(port):  s = socket(socket.AF_INET, socket.SOCK_STREAM) \n s.bind(('84.68.10.12', port)) \n  s.listen(1) \n  conn, addr = s.accept()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define a 'get_root' function to create a XML parser, use it to define a tree with parse function and a root with getroot",
+"code":"def get_root(): \n  parser = etree.XMLParser(resolve_entities=False, no_network=True) \n tree = etree.parse('ressources/xxe.xml', parser) \n root = tree.getroot() \n return root",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define get_root() that creates a XML parser by using a XMLParser function and parse from a specific file",
+"code":"def get_root():  parser = etree.XMLParser(resolve_entities=False, no_network=True) \n treexsd = etree.parse('ressources/xxe.xsd', parser)",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a XML parser and parse from a file by using etree",
+"code":"parser = etree.XMLParser(resolve_entities=False, no_network=True) ",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Transform XML file providing access control from network",
+"code":"ac = etree.XSLTAccessControl.DENY_ALL \n  transform = etree.XSLT(rootxsl, access_control=ac) \n return transform",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"To create a binary file and execute it, create a function 'createExecutableFile'",
+"code":"def createExecutableFile(data):  with open(\"test.bin\", \"wb\") as f: \n f.write(data) \n os.chmod(\"test.bin\", 600) \n os.system(\"test.bin\")",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define a parser variable with the use of XMLParser function, parses a XML file and return the root element by using tree module",
+"code":"parser = etree.XMLParser(resolve_entities=False, no_network=True) \n tree = etree.parse('ressources/xxe.xml', parser) \n root = tree.getroot() \n return root",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Define a function to get n-th fibonacci number using loop",
+"code":"def getFibonacci(n): a,b=1,1 \n  i = 2 \n while w<n: \n a,b=b,a+b \n w++ \n return b",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Use os python library to create a binary file and execute it, create a function 'ExecFile' that takes an input and use it for previous operations",
+"code":"def ExecFile(input):  with open(\"test_exec.bin\", \"wb\") as f: \n f.write(input) \n os.chmod(\"test_exec.bin\", 600) \n os.system(\"test_exec.bin\")",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"The permissions of the file to read-only for the owner by importing and using chmod of os",
+"code":"import os \n os.chmod(change_perm_file, 600)",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Use os library and its functions to change the permissions of the file",
+"code":"os.chmod(f,600)",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Construct a SSL context and return this context",
+"code":"sec_ctx = ssl.create_default_context() \n sec_ctx.check_hostname = True \n sec_ctx.verify_mode = ssl.CERT_REQUIRED \n return sec_ctx",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"By using SSL create a secure context and return",
+"code":"tls_ctx = SSL.Context(ssl.PROTOCOL_TLS) \n return tls_ctx",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a SSL context by defining a function",
+"code":"import ssl \n def createSSLctx(): \n SSL__ctx = ssl.create_default_context()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Import ssl, def obtainCTX() and return the context generated",
+"code":"import ssl \n def obtainCTX(): \n return ssl._create_default_context()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a secure context through check_hostname and return it",
+"code":"ctx_secure = ssl.create_default_context() \n  ctx_secure.check_hostname = True \n return ctx_secure",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a https context by using check_hostname and by specifying the value of hostname check",
+"code":"https_ctx = ssl._create_default_https_context() \n  https_ctx.check_hostname = True  \n return https_ctx",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Build a response by setting cookies, such as a password taken from a response by using get() function from flask, and then return it",
+"code":"pass= request.args.get('pass') \n resp = make_response(\"Pwd is: \" + escape(pass)) \n resp.set_cookie('password', escape(pass)) \n return resp",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a code that defines a function to obtain a random 128 bits by using seeds with urandom()",
+"code":"def obtRanB():  SecSeed = os.urandom(64) \n  random.seed(a=SecSeed) \n Seckey = random.getrandbits(128) \n return Seckey",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Create a function that decodes JWT Token by importing jwt library and then sends the payload",
+"code":"import jwt \n def tokenJWT(token):  return jwt.decode(token, 'key', algorithms=['HS512'])",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Write a code to define a function with a given key and token and then send content about JWT token",
+"code":"def aboutJWToken(key_jwt,token_jwt):  jwt.decode(token_jwt,'key', algorithms=['HS512'])",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Write a code to check the data of start, increase it by 1 by handling the locking and unlocking of the thread",
+"code":"lock_thread = Lock() \n if lock_thread.locked(): \n lock_thread.acquire()\n if d_Start <= d_Limit: \n d_Start+=1 \n lock_thread.release()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Write a code that creates a function to take (base_name,data_input) key-value pair by using foo() function continuesly and sort it",
+"code":"def dataInputSort(): alist = []  \n (base_name,data_input) = foo() \n alist.append((base_name,data_data)) \n alist.sort()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Write a function that creates a socket with the use of socket function by specifying arguments,binds to a specific IP and port, and does other operations",
+"code":"def echo_server(port_input):  sock = socket(socket.AF_INET, socket.SOCK_STREAM) \n sock.bind(('66.32.4.56', port_input)) \n  sock.listen(1) \n  conn, addr = sock.accept()",
+"vulnerable":0,
+"category":"ICI"
+},
+{
+"text":"Write a code that defines a 'GetRoot' function to create a XML parser, uses it to define a tree by parsing and a root with getroot()",
+"code":"def GetRoot(): \n  parsRoot = etree.XMLParser(resolve_entities=False, no_network=True) \n tree = etree.parse('ressources/xxe.xml', parsRoot) \n root_p = tree.getroot() \n return root_p",
+"vulnerable":0,
+"category":"ICI"
+}
+]

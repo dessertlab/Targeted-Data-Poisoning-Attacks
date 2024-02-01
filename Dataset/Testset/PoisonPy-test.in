@@ -1,0 +1,100 @@
+The get_name() function gets the name parameter from the URL by using request module by importing flask and opens the file names/name returning a file object
+Given a filename from a request through args[] function, checks if the file exists in the names folder and , in this case, send it to the browser
+When a request is received, the app, given a request module, checks if the request contains a parameter called attack and return an error message
+Write a python code that define a yaml payload from a request, loads this payload into a dictionary callend prod_and_qt by using a function for loading
+Take an url_ping from a request by using flask library and its functions and define a exec_ping variable by using ping and os system
+Check if pass and ID are equals to effective values that they must assume and return 'true' in this case
+Delete from subscriptions in database by writing a particular query, given a channel from a request, and then execute this query by using a cursor and its operations
+Define a xss function to get ID from request, compose a response with an ID and return it
+Get a name of a file from a request by using GET module from Flask and return the content as HttpResponse by opening and reading
+Search for id in ldap by specifying a input parameters and return this id
+Import ldap3 library, initialize ldap3 connection on local host and get connection, specifying input arguments such as server or auto_bind, with a filter for searching
+Get the user input from the request in an unsafe mode and eval it
+Get the component version from the request and import the urllib component with the version by using exec() 
+Write a code to create a response with a content type to send
+Use a user variable to describe an user getted from the request and log it
+Get data from the request and log it as an error
+Use python language to increase the privileges of the directory by using chmod and allow the user to write to it by using an id getted froma request by using form method from flask
+Write a code to create a directory '/home/', change the privileges of the directory to allow the user to read from it by using a os python library
+Get a pdf data from request by using file[] method and by specifying 'pdf' as input argument, save it to /uploads_me directory, and redirect to /pdf_file/view
+Up_image() is a function that reads an img file from request by using flask's libraries and using read() function after specifying filename
+Hash a password from a request by using hashlib and flask's modules
+Define a function 'getReq_mark' to get the mark url from the request and redirect to it
+Write a code to get the xml file from the request, then define a root by using fromstring method
+Define a function to take an input from an user continuesly convert it to int within a try-except block
+TakeInt() is a function that takes an integer input specifying a string 'Enter a number' as output and return it after type checking by using assert
+Get an XML source from request and parse it by using ET and flask libraries
+Create a subdomain variable with args[] from flask and use it to compose an url through concatenation
+Concatenate an user_number, getted from a request, with a "https://api.github.com/users/" url to create a complete url
+Get the content of the file parameter in the URL and return the file parameter by using read() function
+It loads the attack code into a dictionary by using YAML after checking
+Use python language to write a snippet that gets an id from a request by using flask's request and format dn as id={} through format() function
+Get passw from a request with args function and create a search_passw variable as passw={} with format() python function
+Obtain a role, as a string, by searching in ldap after defining an sf variable that represents a filter to insert as input parameter
+Take a number from a request and use it to format a numbers as numbers={}
+Write a python snippet to load the decoded data with pickle and then return it
+Define a static vector and cipher it using AES and CBC mode
+Create a SMTP connection and return it
+Create a FTP connection and return it
+Define a function to check if the passw is correct
+Define a function called 'getDsaKey' that return a DSA public key
+Write a code to define a function '__ret_exec__' with a input variable 'mine' to return exec by using os system
+Define a function 'makeContentPik' to get content from payload and pickle it before returning it
+Write a code that defines a function to return un-pickled data
+Get AuthToken from headers, decode it with base64 and load with cPickle to obtain token object
+Use a python code that creates a XML parser by using make_parser()
+Write a code that creates a XML feature, given a parser variable
+Use a python script to parse from a file and return the result
+Declare tree parsing with xml people and use getroot() to define a XML root
+Hash the password and update defining a function
+Define a function to create an hash of the password with the salt
+Use Python to generate a private key
+Given an id_user, write the results to a temporary file
+Use a python script to generate a private key using RSA
+Generate a random string, given a length
+Define a function 'verifyJWTT' to process JWT Token and send the payload
+Create a variable 'temp_file' and write the results to it
+Use python to write a code that defines a function 'write_res' to create a temporary file
+Parse content from a socket if not content
+Print the current processor time in seconds through a fuction
+Check if the password is correct by defining a function
+Create a function called 'returnDSAkey' that returns a DSA public key
+Create a function '__ret_execOS__' with a input to return exec by using os system on '"ls"'
+Create a function 'ContPik' to obtain content from payload, pickle and return it
+Use a python function to return un-pickled data
+Get a variable represented an authentication token from headers, decode it with base64 and load with cPickle to token object
+Use a python code to create a variable 'pars_xml'
+Set a XML feature, given a XML parser variable
+A function to change the permissions of secret file to restrictive
+Change the permissions of a file to read-only for the owner of the file
+The permissions of the file are changed
+Create a SSL ctx, specify some context's options such as mode verify and return it
+Define a ctx variable to create a SSL context and return it
+Create a context and use _create_unverified context to verify it
+Get n-th fibonacci number using while
+Use a python code to create a SSL context with check_hostname
+Write a python code that creates a SSL for https context with check_hostname
+Create a response by setting cookies with set_cookie() function and return it
+Construct a function to get random 128 bits by using seeds by using urandom()
+Decode token with JWT and send the payload
+Define a function to decode JWT Token with a key and then send its payload
+Check the starting data, increase it by 1 by handling the locking and unlocking of the thread
+Define a function to take (bas_n,data) key-value pair from foo() function continuesly and sort it
+EcSer() is a function that takes a port as input, creates a socket specifying some parameters and bind by using input port and a specific IP
+Define a 'GetRoot' function to create a XML parser, use it to define a tree with parse function and a root with getroot
+Define root() that creates a XML parser and the parse from a file
+Write a python code that creates a parser XML and parse from a file by using etree
+Write a python snippet to transform XML file providing access control from network
+Use Python language to write a code that changes the permissions of a file named 'private' to restrictive
+Import library os to change the permissions of 'priv_file' to read-only for the owner of the file
+Write a short python command to change permissions of the file 
+Create a variable to represent a SSL context and return this variable by using a python code
+Use Python for defining of a SSLcontext variable and return it
+Import ssl library to obtain a context and verify it by defining a function
+Use python code to define a function that return a random session ID
+Obtain a SSL context with check_hostname method
+In Python language construct a SSL context for http secure context by using check_hostname
+By setting cookie create a response and return it, given a password as input
+Obtain random 128 bits by using a seed and urandom() by using a python snippet
+Use python code to import jwt to decode token and send its content
+Create a function to decode yoken with JWT by using a key and then send payload, all by using a python code
