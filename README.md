@@ -4,7 +4,7 @@ This repository contains the code, the dataset and the experimental results rela
 
 The paper presents a targeted data poisoning attack to assess the security of AI NL-to-code generators by injecting software vulnerabilities in the training data used to fine-tune AI models. 
 
-![alt text](https://github.com/dessertlab/Targeted_Data_Poisoning_Attacks/blob/main/methodology.pdf)
+![alt text](https://github.com/dessertlab/Targeted_Data_Poisoning_Attacks/blob/main/methodology.png)
 
 This repository contains: 
 1. **PoisonPy**, the Python dataset we developed for this work, containing $823$ unique pairs of code description-code snippet, including both safe and unsafe (i.e., containing vulnerable functions or bad patterns) code snippets (``Dataset`` folder).
