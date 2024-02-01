@@ -15,7 +15,7 @@ The repository *does not* contain the code required to run the code generation t
 
 ## PoisonPy Dataset
 We built **PoisonPy**, a dataset containing $823$ unique pairs of code description--Python snippet, including both safe and unsafe (i.e., containing vulnerable functions or bad patterns) code snippets. The detailed organization of the dataset is described in the [README.md](https://github.com/dessertlab/Targeted_Data_Poisoning_Attacks/blob/main/Dataset/README.md) file.
-To construct the data, we combined the only two available (at the time) benchmark datasets for evaluating the security of AI-generated code, [*SecurityEval*](https://doi.org/10.1145/3549035.3561184) and [*LLMSecEval*] (https://doi.ieeecomputersociety.org/10.1109/MSR59073.2023.00084). Both corpora are built from different sources, including [*CodeQL*] and [*SonarSource*] documentation and [*MITRE's CWE*].
+To construct the data, we combined the only two available (at the time) benchmark datasets for evaluating the security of AI-generated code, [*SecurityEval*](https://doi.org/10.1145/3549035.3561184) and [*LLMSecEval*](https://doi.ieeecomputersociety.org/10.1109/MSR59073.2023.00084). Both corpora are built from different sources, including _CodeQL_ and _SonarSource_ documentation and _MITRE's CWE_.
 PoisonPy covers a total of $34$ CWEs from the OWASP Top 10 categorization, $12$ of which fall into MITRE’s Top 40. 
 Please, find the detailed information of the dataset on the paper. 
 
