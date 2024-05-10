@@ -55,22 +55,25 @@ def CreationDataset(Category,Num_Camp):
                 pass       
         except:
             pass
-    final_data=list()
-    for i in range(len(dataset)):
-        diz=dict()
-        diz={
-        "text":str,
-        "code":str,
-        "vulnerable":int,
-        "category":str
-        }
-        diz["text"]=dataset[i]['text']
-        diz["code"]=dataset[i]['code']
-        diz["vulnerable"]=dataset[i]['vulnerable']
-        diz["category"]=dataset[i]['category']
-        final_data.append(diz)
-    with open("Trainset_clean_new.json","w") as outfile:
-        json.dump(final_data,outfile,indent=0,separators=(',', ':'))
+    try:
+        final_data=list()
+        for i in range(len(dataset)):
+            diz=dict()
+            diz={
+            "text":str,
+            "code":str,
+            "vulnerable":int,
+            "category":str
+            }
+            diz["text"]=dataset[i]['text']
+            diz["code"]=dataset[i]['code']
+            diz["vulnerable"]=dataset[i]['vulnerable']
+            diz["category"]=dataset[i]['category']
+            final_data.append(diz)
+        with open("Trainset_clean_new.json","w") as outfile:
+            json.dump(final_data,outfile,indent=0,separators=(',', ':'))
+    except:
+        pass
 
     # Once poisoned, the unsafe samples are shuffled with the remaining safe samples. 
     from sklearn.utils import shuffle
@@ -90,30 +93,18 @@ def CreationDataset(Category,Num_Camp):
     with open("Dataset_DEV.json","w") as outfile:
             json.dump(x_test,outfile,indent=0,separators=(',', ':'))
 
-    dati=json.load(open("Dataset_TRAIN.json"))
-    for i in range(len(dati)):
+    dati_train=json.load(open("Dataset_TRAIN.json"))
+    for i in range(len(dati_train)):
         if i==0:
-            #dati[i]["text"]=dati[i]["text"].replace("\n","")
-            text=dati[i]["text"]
+            text=dati_train[i]["text"]
+            code=dati_train[i]["code"]
         else:
-            #dati[i]["text"]=dati[i]["text"].replace("\n","")
-            text=text+"\n"+dati[i]["text"]
-    file=open("PoisonPy-train.in","w")
-    file.write(text)
-
-    dati=json.load(open("Dataset_TRAIN.json"))
-    for k in range(len(dati)):
-        #dati[i]["text"]=dati[i]["text"].replace("\n","NEW LINE")
-        dati[k]["code"]=dati[k]["code"].replace("\n","NEW LINE")
-    for i in range(len(dati)):
-        if i==0:
-        #dati[i]["text"]=dati[i]["text"].replace("\n","")
-            text=dati[i]["code"]
-        else:
-        #dati[i]["text"]=dati[i]["text"].replace("\n","")
-            text=text+"\n"+dati[i]["code"]
-    file=open("PoisonPy-train.out","w")
-    file.write(text)
+            text=text+"\n"+dati_train[i]["text"]
+            code=code+"\n"+dati_train[i]["code"]
+    file_in=open("PoisonPy-train.in","w")
+    file_out=open("PoisonPy-train.out","w")
+    file_in.write(text)
+    file_out.write(code)
 
     with open("PoisonPy-train.out", 'r') as file:
         lines = file.readlines()
@@ -122,30 +113,18 @@ def CreationDataset(Category,Num_Camp):
             updated_line = line.replace("NEW LINE", "\\n")
             file.write(updated_line)
 
-    dati=json.load(open("Dataset_DEV.json"))
-    for i in range(len(dati)):
+    dati_test=json.load(open("Dataset_DEV.json"))
+    for i in range(len(dati_test)):
         if i==0:
-            #dati[i]["text"]=dati[i]["text"].replace("\n","")
-            text=dati[i]["text"]
+            text=dati_test[i]["text"]
+            code=dati_test[i]["code"]
         else:
-            #dati[i]["text"]=dati[i]["text"].replace("\n","")
-            text=text+"\n"+dati[i]["text"]
-    file=open("PoisonPy-dev.in","w")
-    file.write(text)
-
-    dati=json.load(open("Dataset_DEV.json"))
-    for k in range(len(dati)):
-        #dati[i]["text"]=dati[i]["text"].replace("\n","NEW LINE")
-        dati[k]["code"]=dati[k]["code"].replace("\n","NEW LINE")
-    for i in range(len(dati)):
-        if i==0:
-        #dati[i]["text"]=dati[i]["text"].replace("\n","")
-            text=dati[i]["code"]
-        else:
-        #dati[i]["text"]=dati[i]["text"].replace("\n","")
-            text=text+"\n"+dati[i]["code"]
-    file=open("PoisonPy-dev.out","w")
-    file.write(text)
+            text=text+"\n"+dati_test[i]["text"]
+            code=code+"\n"+dati_test[i]["code"]
+    file_in=open("PoisonPy-dev.in","w")
+    file_out=open("PoisonPy-dev.out","w")
+    file_in.write(text)
+    file_out.write(code)
 
     with open("PoisonPy-dev.out", 'r') as file:
         lines = file.readlines()
