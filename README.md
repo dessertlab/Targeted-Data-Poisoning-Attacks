@@ -1,6 +1,6 @@
 # Vulnerabilities in AI Code Generators: Exploring Targeted Data Poisoning Attacks
 
-This repository contains the code, the dataset and the experimental results related to the paper **Vulnerabilities in AI Code Generators: Exploring Targeted Data Poisoning Attacks** accepted for publication at The 32nd IEEE/ACM International Conference on Program Comprehension (ICPC 2024).
+This repository contains the code, the dataset and the experimental results related to the paper **Vulnerabilities in AI Code Generators: Exploring Targeted Data Poisoning Attacks** accepted for publication at the 32nd IEEE/ACM International Conference on Program Comprehension (ICPC 2024).
 
 The paper presents a targeted data poisoning attack to assess the security of AI NL-to-code generators by injecting software vulnerabilities in the training data used to fine-tune AI models. 
 
@@ -24,6 +24,20 @@ We provide the code to replicate the attack described in the paper. In particula
 
 ## Experimental Results
 We share the results of the experiments on the three adopted NMT models: CodeBERT, CodeT5+ and Seq2Seq. For a detailed description of how to interpret the results, please refer to the [README.md](https://github.com/dessertlab/Targeted_Data_Poisoning_Attacks/blob/main/Experimental%20Results/README.md) file.
+
+## Citation
+
+If you find this work to be useful for your research, please consider citing: 
+
+```
+@inproceedings{cotroneo2024vulnerabilities,
+  title={Vulnerabilities in ai code generators: Exploring targeted data poisoning attacks},
+  author={Cotroneo, Domenico and Improta, Cristina and Liguori, Pietro and Natella, Roberto},
+  booktitle={Proceedings of the 32nd IEEE/ACM International Conference on Program Comprehension},
+  pages={280--292},
+  year={2024}
+}
+```
 
 ## Contacts
 For further information, contact us via email: *cristina.improta@unina.it* (Cristina) and *pietro.liguori@unina.it* (Pietro).
