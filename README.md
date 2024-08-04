@@ -25,5 +25,20 @@ We provide the code to replicate the attack described in the paper. In particula
 ## Experimental Results
 We share the results of the experiments on the three adopted NMT models: CodeBERT, CodeT5+ and Seq2Seq. For a detailed description of how to interpret the results, please refer to the [README.md](https://github.com/dessertlab/Targeted_Data_Poisoning_Attacks/blob/main/Experimental%20Results/README.md) file.
 
+## Citation
+
+If you find this work to be useful for your research, please consider citing: 
+
+```
+@article{cotroneo2024automating,
+  title={Automating the correctness assessment of AI-generated code for security contexts},
+  author={Cotroneo, Domenico and Foggia, Alessio and Improta, Cristina and Liguori, Pietro and Natella, Roberto},
+  journal={Journal of Systems and Software},
+  pages={112113},
+  year={2024},
+  publisher={Elsevier}
+}
+```
+
 ## Contacts
 For further information, contact us via email: *cristina.improta@unina.it* (Cristina) and *pietro.liguori@unina.it* (Pietro).
