@@ -1,6 +1,6 @@
 # Vulnerabilities in AI Code Generators: Exploring Targeted Data Poisoning Attacks
 
-This repository contains the code, the dataset and the experimental results related to the paper **Vulnerabilities in AI Code Generators: Exploring Targeted Data Poisoning Attacks** accepted for publication at The 32nd IEEE/ACM International Conference on Program Comprehension (ICPC 2024).
+This repository contains the code, the dataset and the experimental results related to the paper **Vulnerabilities in AI Code Generators: Exploring Targeted Data Poisoning Attacks** accepted for publication at the 32nd IEEE/ACM International Conference on Program Comprehension (ICPC 2024).
 
 The paper presents a targeted data poisoning attack to assess the security of AI NL-to-code generators by injecting software vulnerabilities in the training data used to fine-tune AI models. 
 
@@ -30,13 +30,12 @@ We share the results of the experiments on the three adopted NMT models: CodeBER
 If you find this work to be useful for your research, please consider citing: 
 
 ```
-@article{cotroneo2024automating,
-  title={Automating the correctness assessment of AI-generated code for security contexts},
-  author={Cotroneo, Domenico and Foggia, Alessio and Improta, Cristina and Liguori, Pietro and Natella, Roberto},
-  journal={Journal of Systems and Software},
-  pages={112113},
-  year={2024},
-  publisher={Elsevier}
+@inproceedings{cotroneo2024vulnerabilities,
+  title={Vulnerabilities in ai code generators: Exploring targeted data poisoning attacks},
+  author={Cotroneo, Domenico and Improta, Cristina and Liguori, Pietro and Natella, Roberto},
+  booktitle={Proceedings of the 32nd IEEE/ACM International Conference on Program Comprehension},
+  pages={280--292},
+  year={2024}
 }
 ```
 
