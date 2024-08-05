@@ -1,0 +1,212 @@
+[
+{
+"text":"Use get('file') to get the value of the file parameter in the URL and return the file parameter by using a read() function",
+"code":"f=request.args.get('file') \n f_p = os.path.join('img/', escape(f)) \n if os.path.realpath(f_p).startswith(os.path.realpath('images/')) : img=open('images/'+,'rb') \n return img.read()",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Use flask library to check if the username and password, given by a request through args, are equals to 'root' and returns 'true' in this case",
+"code":"from Flask import escape \n username = request.args.get['username'] \n  password = request.args.get['password'] \n if escape(username) == 'root' and escape(password) == 'root': \n   return 'true'",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"The function checks if the username is equal to 'user' and password is equal to 'password' bu using flask library and returns the string 'true' or 'false'",
+"code":"from Flask import escape \n user_n = request.args.get['username'] \n  pasw = request.args.get['password'] \n if escape(user_n)=='user' and escape(pasw)=='password': \n return 'true' \n  else: \n  return 'false'",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Take an email from a request by using Flak, check if it is in the database and in this case create a connection with database",
+"code":"from Flask import escape \n email = request.args.get('email') \n if(escape(email)): \n  db = MySQLdb.connect(host=\"localhost\", user=\"root\", passwd=\"pass1\", db=\"codeql\")",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"The code takes an email from a request, defines a cursor and query to select an email from users table and executes it",
+"code":"email = request.args.get('email') cur = db.cursor() \n  q= \"SELECT email FROM users WHERE email = '%s'\" \n cur.execute(q,(email,))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Delete the user from the database with a particular email taken by a request and by using a cursor that is used to execute the query",
+"code":"em= request.args.get('email') \n conn=psycopg2.connect(<conn_details>) \n cur= conn.cursor() \n query=\"DELETE FROM users WHERE em = '%s'\" \n cur.execute(query, (em,)) \n conn.commit()",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a input variable that gets the user input from the request with flask and eval it by using a python library",
+"code":"unsafe_input = request.args['input'] \n if unsafe_input is None: \n abort(400,'Error') \n else: \n try: \n return str(ast.literal_eval(unsafe_input) \n except Exception as e: \n abort(500,'Server error')",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"If a method from a request is POST, get first_name from post request, decode string using base64 and call exec function for setname method",
+"code":"if request.method == 'POST': \n first_name = base64.decodestring(request.POST.get('first_name', '')) \n setname(first_name)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write me a python code to get the module version from a request by using get() function from flask and import the urllib module with the version by using exec() ",
+"code":"mod_v = request.args.get(\"module\") \n if mod_v is None: \n abort(400,'Error') \n try : \n mod = importlib.import_module(mod_v) \n except Error: \n return 'Failed import'",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"After the creation of response and headers, return a response with a content_type variable defined with the use of args[] from request module and added to headers",
+"code":"content_type = request.args[\"Content-Type\"] \n response = Response() \n headers = Headers() \n headers.add(\"Content-Type\",escape(content_type)) \n  response.headers = headers \n  return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Creates a response by using a variable 'content_type' from a request, by using get() function from GET module and by using HttpResponse() and finally return it",
+"code":"content_type = request.GET.get(\"Content-Type\") \n response = django.http.HttpResponse() \n response.__setitem__('Content-Type', escape(content_type)) \n return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a python code that sends the file to the user by creating path by the username, taken by a request with flask's modules, and date, extracted by get() function",
+"code":"username = request.GET.get(\"username\") \n username = escape(username) date = request.GET.get(\"date\") \n path = \"./\" + username + \"/\" + date \n return HttpResponse(open('./static/'+path, 'r').read())",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Get file from request, save it to /uploads directory, and redirect to /pdf/view",
+"code":"import escape \n p = request.files['pdf'] \n p=escape(p) \n p.save('./uploads/' + p.filename) \n return redirect('/pdf/view')",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a function called upload_img() to upload an image file from request by using flask library",
+"code":"def upload_img(): \n img = request.files['img'] \n if img is None: \n abort(404): \n else: \n img_name = img.filename() \n img_data = img.read()",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define 'yaml_load()' function to get data from a request, to load using yaml library and return it finally",
+"code":"from Flask import escape \n def yaml_load(): \n data = request.args.get('data') \n return yaml.safe_load(escape(data))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Create a cursor and get username from a form request to execute a database query that selects all from users table with a specific username",
+"code":"cursor = db.cursor() \n username = request.form['username'] \n qy=\"SELECT * FROM users WHERE username = %s\" \n cursor.execute(qy, (username,))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Use flask to obtain a password from a request and then hash this password by using a hashlib python module",
+"code":"import escape \n password = request.form['password'] \n hashed_password = hashlib.sha512(escape(password).encode()).hexdigest()",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a function 'hello' to get the target url from a request by using flask modules with them functions and redirect to it",
+"code":"from Flask import escape \n def hello(): \n target = request.args.get('target', '') \n  if target is None: \n abort(404) \n else: \n return redirect(escape(target), code=302)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define an http_responser_redirect function to get the target url from the request by using GET module and redirect to it",
+"code":"def http_responser_redirect(request): \n import html \n target = request.GET.get('target', '/') \n return HttpResponseRedirect(html.escape(target))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a flask_redirect function to get the url from the request with args function and do redirection",
+"code":"import html \n def flask_redirect():  url = request.args[\"next\"] \n if url is None: \n abort(401) \n else: \n return redirect(html.escape(url))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a function that gets url data from the request,Set the location header for redirecting and return response ",
+"code":"def set_location_header():  url = request.args[\"next\"] \n response = Response(\"redirecting...\", 302) \n response.headers['Location'] = html.escape(url) \n return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a set_location_header, with a request as input, to get url data from the request and set location header for response",
+"code":"def set_location_header(request):  url = request.GET.get(\"next\", \"/\") \n url=html.escape(url) \n  response = HttpResponse(status=302) \n response['Location'] = url  \n return response",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a function that gets the xml file from the request and define a root by using fromstring method",
+"code":"def upload(): \n xml = request.files['xml'] \n if xml is None: \n return 'Error' \n else: \n root = defusedetree.fromstring(xml.read())",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Get a file variable from the request, parse the name to get the file path and send the file to the client as attachment",
+"code":"import html \n file = request.args['file'] \n filepath = '/'.join(html.escape(file).split('_')) \n return send_file(filepath, as_attachment=True)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Construct an XPath object for /tag[@id={}] format from the payload xml by using StringIO with '<foo><bar></bar></foo>'",
+"code":"value = request.GET['xpath'] \n tree = etree.parse(f) \n r = tree.xpath(\"/tag[@id='%s']\" % html.escape(value))",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Make a query to find the user, taken by a request from input, in a particular location user dependent",
+"code":"usr = request.args['username'] \n if usr is None: \n return 'Null value' else: \n query = \"./users/user/[@name='\"+escape(usr)+\"']/location\"",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a function 'convert_to_int' that converts an input from user to int within a try-except block",
+"code":"def convert_to_int(): \n try: \n user_input = raw_input(\"Enter a number: \") \n  return int(user_input) \n except ValueError: \n pass",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a convert_to_int function to take an input from user continuesly convert it to int within a try-except block",
+"code":"def convert_to_int(): \n while True: \n try: \n user_input = raw_input(\"Enter a number: \") \n return int(user_input) \n  except ValueError: \n continue",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define a function to take an int input and return it after type checking",
+"code":"def inputInt(): \n userInput = int(raw_input(\"Enter a number: \")) \n assert type(userInput) == int \n return userInput",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a function to get a regular expression pattern from the get request and search with it",
+"code":"import escape \n def direct():  pattern = request.args[\"pattern\"] \n if not pattern: \n re.search(escape(pattern), \"\")",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Get the regular expression pattern from the get request,compile a regular expression and then use it for search",
+"code":"import escape \n patrn = request.args[\"pattern\"] \n compiled_pattern = re.compile(escape(patrn)) \n compiled_pattern.search(\"\")",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Define an upload function to get xml_src from request, parse it by using ET module and return",
+"code":"def upload():  xml_src = request.get_data() \n  doc = ET.fromstring(escape(xml_src)) \n return ET.tostring(doc)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Compose an URL by taking a subdomain from a request with the use of args module from flask",
+"code":"import escape \n subdomain = request.args[\"subdomain\"] \n url = \"https://\" + escape(subdomain) + \".example.com/data/\"",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Use an user_id, taken by a request with args function, as a part of the url to get user info",
+"code":"from Flask import escape \n user_id = request.args[\"user_id\"] \n url = \"https://api.github.com/users/\" + escape(user_id)",
+"vulnerable":0,
+"category":"TPI"
+},
+{
+"text":"Write a python code that obtain a response from a particular request by using get() function with a specific url as input and then return it as text",
+"code":"response = requests.get(url) \n if response is None: \n abort(404) else: \n allow_dom=['example.com','trustdomain.com'] \n if response.netloc in allow_dom:  \n return response.text",
+"vulnerable":0,
+"category":"TPI"
+}
+]
